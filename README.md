@@ -18,24 +18,14 @@ $ npm install eslint-plugin-react-rxjs --save-dev
 
 ## Usage
 
-Add `react-rxjs` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `plugin:react-rxjs/recommended` to the extends section of your `.eslintrc` configuration file:
 
 ```json
 {
-  "plugins": ["react-rxjs"]
-}
-```
-
-Then configure the rules you want to use under the rules section.
-
-```json
-{
-  "rules": {
-    "react-rxjs/rule-name": 2
-  }
+  "extends": ["plugin:react-rxjs/recommended"]
 }
 ```
 
 ## Supported Rules
 
-- Fill in provided rules here
+- connect-in-components

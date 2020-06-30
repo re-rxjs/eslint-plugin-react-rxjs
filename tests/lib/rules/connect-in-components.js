@@ -1,7 +1,3 @@
-/**
- * @fileoverview Ensures connect is only called in the root scope
- * @author Victor Oliva
- */
 "use strict";
 
 //------------------------------------------------------------------------------
