@@ -8,7 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/react-rxjs-connect-root-scope"),
+var rule = require("../../../lib/rules/connect-in-components"),
 
     RuleTester = require("eslint").RuleTester;
 
@@ -24,9 +24,9 @@ var ruleTester = new RuleTester({
     }
 });
 const error = {
-    message: "ur calling connect inside a function. Plz dont do that."
+    message: "react-rxjs connect functions shouldn't be called within Components. Call them once in the root scope and use the hook in the Component"
 }
-ruleTester.run("react-rxjs-connect-root-scope", rule, {
+ruleTester.run("connect-in-components", rule, {
     valid: [
         `
             import { connectObservable } from 'react-rxjs';
