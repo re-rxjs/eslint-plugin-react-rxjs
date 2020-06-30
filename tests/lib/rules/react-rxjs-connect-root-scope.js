@@ -17,21 +17,51 @@ var rule = require("../../../lib/rules/react-rxjs-connect-root-scope"),
 // Tests
 //------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({
+    parserOptions: {
+        ecmaVersion: 6,
+        sourceType: 'module',
+    }
+});
+const error = {
+    message: "ur calling connect inside a function. Plz dont do that."
+}
 ruleTester.run("react-rxjs-connect-root-scope", rule, {
-
     valid: [
+        `
+            import { connectObservable } from 'react-rxjs';
 
-        // give me some code that won't trigger a warning
+            const [useValue] = connectObservable(value$);
+
+            function MyComponent() {
+                const value = useValue();
+            }
+        `,
+        `
+            const connectObservable = (observable) => connect(observable);
+
+            function MyComponent() {
+                connectObservable(observable);
+            }
+        `,
     ],
 
     invalid: [
         {
-            code: "<failing code>",
-            errors: [{
-                message: "Fill me in.",
-                type: "Me too"
-            }]
+            code: `
+                import { connectObservable } from 'react-rxjs';
+
+                function myFunction() { connectObservable() }
+            `,
+            errors: [error]
+        },
+        {
+            code: `
+                import { connectObservable } from 'react-rxjs';
+
+                function myFunction() { connectObservable() }
+            `,
+            errors: [error]
         }
     ]
 });
