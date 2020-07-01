@@ -1,4 +1,4 @@
-# Ensures connect functions are not being called within Components (connect-in-components)
+# Ensures connect functions are not being called within Components (no-connect-in-components)
 
 `connectObservable` and `connectFactoryObservable` should be used to create a
 shared hook from an observable. They shouldn't be used directly in React Components
