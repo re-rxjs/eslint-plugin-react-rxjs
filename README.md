@@ -28,4 +28,4 @@ Add `plugin:react-rxjs/recommended` to the extends section of your `.eslintrc` c
 
 ## Supported Rules
 
-- connect-in-components
+- no-connect-in-components
