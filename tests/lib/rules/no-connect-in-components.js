@@ -21,24 +21,24 @@ var ruleTester = new RuleTester({
 });
 const error = {
   message:
-    "react-rxjs connect functions shouldn't be called within Components. Call them once in the root scope and use the hook in the Component",
+    "react-rxjs `bind` shouldn't be called within Components. Call it once in the root scope and use the hook in the Component",
 };
 ruleTester.run("no-bind-in-components", rule, {
   valid: [
     `
-            import { connectObservable } from 'react-rxjs';
+            import { bind } from '@react-rxjs/core';
 
-            const [useValue] = connectObservable(value$);
+            const [useValue] = bind(value$);
 
             function MyComponent() {
                 const value = useValue();
             }
         `,
     `
-            const connectObservable = (observable) => connect(observable);
+            const bind = (observable) => connect(observable);
 
             function MyComponent() {
-                connectObservable(observable);
+                bind(observable);
             }
         `,
   ],
@@ -46,17 +46,17 @@ ruleTester.run("no-bind-in-components", rule, {
   invalid: [
     {
       code: `
-                import { connectObservable } from 'react-rxjs';
+                import { bind } from '@react-rxjs/core';
 
-                function myFunction() { connectObservable() }
+                function myFunction() { bind() }
             `,
       errors: [error],
     },
     {
       code: `
-                import { connectObservable } from 'react-rxjs';
+                import { bind } from '@react-rxjs/core';
 
-                function myFunction() { connectObservable() }
+                function myFunction() { bind() }
             `,
       errors: [error],
     },
