@@ -4,8 +4,10 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/no-connect-in-components"),
+var { rules } = require("../../../dist/bundle"),
   RuleTester = require("eslint").RuleTester;
+
+var rule = rules['no-bind-in-components'];
 
 //------------------------------------------------------------------------------
 // Tests
@@ -21,7 +23,7 @@ const error = {
   message:
     "react-rxjs connect functions shouldn't be called within Components. Call them once in the root scope and use the hook in the Component",
 };
-ruleTester.run("no-connect-in-components", rule, {
+ruleTester.run("no-bind-in-components", rule, {
   valid: [
     `
             import { connectObservable } from 'react-rxjs';

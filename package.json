@@ -8,16 +8,24 @@
     "eslint-plugin"
   ],
   "author": "Victor Oliva",
-  "main": "lib/index.js",
+  "main": "dist/bundle.js",
   "scripts": {
-    "test": "mocha tests --recursive"
+    "test": "mocha tests --recursive",
+    "build": "rollup --config"
   },
   "dependencies": {
+    "@types/eslint": "^7.2.2",
     "requireindex": "~1.1.0"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^5.0.2",
+    "@types/node": "^14.6.2",
+    "@types/requireindex": "^1.2.0",
     "eslint": "^7.1.0",
-    "mocha": "^7.2.0"
+    "mocha": "^7.2.0",
+    "rollup": "^2.26.8",
+    "tslib": "^2.0.1",
+    "typescript": "^4.0.2"
   },
   "engines": {
     "node": ">=0.10.0"
